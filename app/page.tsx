@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import {Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { Plus, List, Check, X, SquarePen, Trash, ListChecks, Sigma } from 'lucide-react';
+import { Plus, List, Check, X, Trash, ListChecks, Sigma } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,7 +15,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import EditTask from "@/components/edit-task";
 
 const home = () => {
   return (
@@ -40,20 +40,8 @@ const home = () => {
           <div className="w-1 h-full bg-green-300"></div>
             <p className="flex-1 px-2 text-sm">Estudar react</p>
             <div className="flex items-center gap-2">
-        <Dialog asChild>
-          <DialogTrigger>
-            <SquarePen size={16} className="cursor-pointer"/>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Editar Tarefa</DialogTitle>
-            </DialogHeader>
-            <div className="flex gap-2 rounded-md">
-              <Input className="rounded-md" placeholder="Editar tarefa" />
-              <Button className="rounded-md cursor-pointer">Editar</Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+
+        <EditTask />
 
               <Trash size={16} className="cursor-pointer"/>
               
@@ -68,8 +56,8 @@ const home = () => {
           </div>
 
       <AlertDialog>
-  <AlertDialogTrigger >
-          <Button variant="outline" className="text-xs cursor-pointer">
+  <AlertDialogTrigger asChild>
+          <Button variant="outline" className="text-xs cursor-pointer rounded-md">
             <Trash />Limpar Concluídas
           </Button>
     </AlertDialogTrigger>
