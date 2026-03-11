@@ -1,12 +1,12 @@
 import { SquarePen } from "lucide-react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
-import { Input } from "./ui/input"
-import { Button } from "./ui/button"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../dialog"
+import { Input } from "../input"
+import { Button } from "../button"
 
 const EditTask = () => {
     return (
         <Dialog>
-          <DialogTrigger asChild>
+          <DialogTrigger>
             <SquarePen size={16} className="cursor-pointer"/>
           </DialogTrigger>
           <DialogContent>

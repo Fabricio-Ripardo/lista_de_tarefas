@@ -15,7 +15,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import EditTask from "@/components/edit-task";
+import EditTask from "@/components/ui/hooks/edit-task";
 
 const home = () => {
   return (
@@ -56,7 +56,7 @@ const home = () => {
           </div>
 
       <AlertDialog>
-  <AlertDialogTrigger asChild>
+  <AlertDialogTrigger>
           <Button variant="outline" className="text-xs cursor-pointer rounded-md">
             <Trash />Limpar Concluídas
           </Button>
@@ -84,7 +84,6 @@ const home = () => {
          <Sigma size={18}/>
          <p className="text-xs">3 tarefas no total</p>
         </div>
-
 
       </CardContent>
       </Card>
