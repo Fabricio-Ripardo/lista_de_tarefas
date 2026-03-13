@@ -1,3 +1,4 @@
+"use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -16,62 +17,115 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import EditTask from "@/components/ui/hooks/edit-task";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const home = () => {
+type Task = {
+  id: number
+  title: string
+  completed: boolean
+}
+
+const Home = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [newTask, setNewtask] = useState("");
+  const getTasks = async () => {
+    try {
+      const response = await axios.get("/api/tasks");
+      setTasks(response.data);
+    } catch (error) {
+      console.error("Erro ao buscar tarefas:", error);
+    }
+  };
+const addTask = async () => {
+  try {
+    await axios.post("/api/tasks", {
+      title: newTask,
+      completed: false
+    });
+
+    setNewtask("");
+    getTasks();
+  } catch (error) {
+    console.error("Erro ao adicionar tarefa:", error);
+  }
+};
+const deleteTask = async (id: number) => {
+  try {
+
+    await axios.delete(`/api/tasks?id=${id}`)
+
+    getTasks()
+
+  } catch (error) {
+    console.error("Erro ao excluir tarefa:", error)
+  }
+}
   return (
     <main className="w-full h-screen bg-black flex justify-center items-center">
 
       <Card className="w-lg p-4">  
         <CardHeader className="flex  gap-2">
-      <Input className="rounded-md" placeholder="Adicionar Tarefa"></Input>
-      <Button variant="outline" className= "cursor-pointer bg-red-500 text-white rounded-md"><Plus /> Adicionar tarefa</Button>
+      <Input value={newTask} onChange={(e) => setNewtask(e.target.value)} className="rounded-md" placeholder="Adicionar Tarefa"></Input>
+      <Button onClick={addTask} variant="outline" className= "cursor-pointer bg-red-500 text-white rounded-md"><Plus /> Adicionar tarefa</Button>
       </CardHeader>
     <Separator />
       <CardContent>
         <Separator className= "mb-4" />
-        <div className="flex gap-2">
+        <div className="flex gap-2 mb-2">
         <Badge className="cursor-pointer rounded-md" variant={"default"}><List /> Todas</Badge>
         <Badge className="cursor-pointer rounded-md" variant={"outline"}><X /> Pendentes</Badge>
         <Badge className="cursor-pointer rounded-md" variant={"outline"}><Check /> Concluídas</Badge>
         </div>
+        <div className="border-b-1 flex flex-col">
 
-        <div className=" mt-4 border-b-1">
-          <div className=" h-12 flex justify-between items-center border-t-1">
-          <div className="w-1 h-full bg-green-300"></div>
-            <p className="flex-1 px-2 text-sm">Estudar react</p>
-            <div className="flex items-center gap-2">
+          {tasks.map((task) => (
+            <div
+              key={task.id}
+              className="h-12 flex justify-between items-center border-t-1"
+            >
+              <div className="w-1 h-full bg-green-300"></div>
 
-        <EditTask />
+              <p className="flex-1 px-2 text-sm">
+                {task.title}
+              </p>
 
-              <Trash size={16} className="cursor-pointer"/>
-              
+              <div className="flex items-center gap-2">
+
+                <EditTask task={task} refreshTasks={getTasks} />
+
+                <Trash
+                  size={16}
+                  className="cursor-pointer"
+                  onClick={() => deleteTask(task.id)}
+                />
+
+              </div>
+
             </div>
-          </div>
-        </div>
+          ))}
+   <AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button variant="outline" className="text-xs rounded-md">
+      <Trash className="w-4 h-4 mr-2" />
+      Limpar Concluídas
+    </Button>
+  </AlertDialogTrigger>
 
-        <div className="flex justify-between mt-2">
-          <div className="flex gap-2 items-center">
-          <ListChecks size={18}/>
-          <p className="text-xs mt-2">Tarefas concluídas (3/3)</p>
-          </div>
-
-      <AlertDialog>
-  <AlertDialogTrigger>
-          <Button variant="outline" className="text-xs cursor-pointer rounded-md">
-            <Trash />Limpar Concluídas
-          </Button>
-    </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
-      <AlertDialogTitle>Deseja excluir x tarefas?</AlertDialogTitle>
+      <AlertDialogTitle>
+        Deseja excluir as tarefas concluídas?
+      </AlertDialogTitle>
+
       <AlertDialogDescription>
-        Esta ação não pode ser desfeita. Isso excluirá permanentemente sua tarefa
-        de nossos servidores.
+        Esta ação não pode ser desfeita.
       </AlertDialogDescription>
     </AlertDialogHeader>
+
     <AlertDialogFooter>
-      <AlertDialogAction>Sim</AlertDialogAction>
       <AlertDialogCancel>Não</AlertDialogCancel>
+      <AlertDialogAction>Sim</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>
@@ -90,4 +144,4 @@ const home = () => {
     </main>
   )
 }
-export default home 
+export default Home 
