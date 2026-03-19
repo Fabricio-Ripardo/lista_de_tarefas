@@ -1,0 +1,13 @@
+{
+  "id": "d9483378-c6ae-4465-bb4c-6bebc963e766",
+  "version": 1,
+  "name": "Postman API Client",
+  "protocol": "http",
+  "port": 4500,
+  "mockSrc": "./mock.js",
+  "autoRestartOnChange": true,
+  "logging": {
+    "level": "verbose",
+    "showBody": true
+  }
+}

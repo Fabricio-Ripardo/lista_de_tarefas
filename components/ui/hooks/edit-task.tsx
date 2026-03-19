@@ -1,41 +1,49 @@
-import { SquarePen } from "lucide-react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../dialog"
-import { Input } from "../input"
-import { Button } from "../button"
-import { useState } from "react"
-import axios from "axios"
+import { SquarePen } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../dialog";
+import { Input } from "../input";
+import { Button } from "../button";
+import { useState } from "react";
+import { api } from "@/Api Tarefas/Api-Tarefas/src/services/api";
 
 type Task = {
-  id: number
-  title: string
-  completed: boolean
-}
+  id: number;
+  title: string;
+  completed: boolean;
+};
 
 type EditTaskProps = {
-  task: Task
-  refreshTasks: () => void
-}
+  task: Task;
+  refreshTasks: () => void;
+};
 
 const EditTask = ({ task, refreshTasks }: EditTaskProps) => {
-
-  const [title, setTitle] = useState(task.title)
+  const [title, setTitle] = useState(task.title);
 
   const updateTask = async () => {
+    if (!title.trim()) return;
+
     try {
-      await axios.put("/api/tasks", {
-        id: task.id,
-        title
-      })
-      refreshTasks()
+      await api.put(`/tasks/${task.id}`, {
+        title,
+        completed: task.completed,
+      });
+
+      refreshTasks();
     } catch (error) {
-      console.error("Erro ao atualizar tarefa:", error)
+      console.error("Erro ao atualizar tarefa:", error);
     }
-  }
+  };
 
   return (
     <Dialog>
       <DialogTrigger>
-        <SquarePen size={16} className="cursor-pointer"/>
+        <SquarePen size={16} className="cursor-pointer" />
       </DialogTrigger>
 
       <DialogContent>
@@ -60,7 +68,7 @@ const EditTask = ({ task, refreshTasks }: EditTaskProps) => {
         </div>
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};
 
-export default EditTask
+export default EditTask;

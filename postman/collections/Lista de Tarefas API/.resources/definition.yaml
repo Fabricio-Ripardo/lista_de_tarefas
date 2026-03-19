@@ -1,0 +1,5 @@
+$kind: collection
+name: Lista de Tarefas API
+variables:
+  - key: baseURL
+    value: 'http://localhost:3000'

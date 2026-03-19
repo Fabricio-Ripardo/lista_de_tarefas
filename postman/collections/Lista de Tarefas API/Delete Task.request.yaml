@@ -1,0 +1,5 @@
+$kind: http-request
+name: Delete Task
+method: DELETE
+url: '{{baseURL}}/api/tasks?id=1'
+order: 4000

@@ -1,0 +1,15 @@
+$kind: http-request
+name: Edit Task
+method: PUT
+url: '{{baseURL}}/api/tasks'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "id": 1,
+      "title": "Updated task title"
+    }
