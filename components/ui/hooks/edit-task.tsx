@@ -9,7 +9,7 @@ import {
 import { Input } from "../input";
 import { Button } from "../button";
 import { useState } from "react";
-import { api } from "@/Api Tarefas/Api-Tarefas/src/services/api";
+import  api  from "@/Api Tarefas/Api-Tarefas/src/services/api";
 
 type Task = {
   id: number;

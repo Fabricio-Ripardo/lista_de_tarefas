@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import EditTask from "@/components/ui/hooks/edit-task";
 import { useState, useEffect } from "react";
-import { api } from "@/Api Tarefas/Api-Tarefas/src/services/api";
+import api from "@/Api Tarefas/Api-Tarefas/src/services/api";
 
 type Task = {
   id: number;
@@ -27,10 +27,9 @@ type Task = {
   completed: boolean;
 };
 
-
 const Home = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [newTask, setNewtask] = useState("");
+  const [newTask, setNewTask] = useState("");
   const [filter, setFilter] = useState<"all" | "pending" | "completed">("all");
 
   const getTasks = async () => {
@@ -51,8 +50,8 @@ const Home = () => {
         completed: false,
       });
 
-      setNewtask("");
-      getTasks();
+      setNewTask("");
+      await getTasks();
     } catch (error) {
       console.error("Erro ao adicionar tarefa:", error);
     }
@@ -61,7 +60,7 @@ const Home = () => {
   const deleteTask = async (id: number) => {
     try {
       await api.delete(`/tasks/${id}`);
-      getTasks();
+      await getTasks();
     } catch (error) {
       console.error("Erro ao excluir tarefa:", error);
     }
@@ -74,7 +73,7 @@ const Home = () => {
         completed: !task.completed,
       });
 
-      getTasks();
+      await getTasks();
     } catch (error) {
       console.error("Erro ao atualizar status da tarefa:", error);
     }
@@ -88,7 +87,7 @@ const Home = () => {
         completedTasks.map((task) => api.delete(`/tasks/${task.id}`))
       );
 
-      getTasks();
+      await getTasks();
     } catch (error) {
       console.error("Erro ao limpar tarefas concluídas:", error);
     }
@@ -114,7 +113,7 @@ const Home = () => {
         <CardHeader className="flex gap-2">
           <Input
             value={newTask}
-            onChange={(e) => setNewtask(e.target.value)}
+            onChange={(e) => setNewTask(e.target.value)}
             className="rounded-md"
             placeholder="Adicionar Tarefa"
           />
@@ -170,7 +169,7 @@ const Home = () => {
                       ? "w-1 h-full bg-green-400"
                       : "w-1 h-full bg-red-400"
                   }
-                ></div>
+                />
 
                 <p
                   className={`flex-1 px-2 text-sm cursor-pointer hover:text-gray-700 ${
@@ -193,7 +192,7 @@ const Home = () => {
             ))}
 
             <AlertDialog>
-              <AlertDialogTrigger >
+              <AlertDialogTrigger>
                 <Button variant="outline" className="text-xs rounded-md mt-3">
                   <Trash className="w-4 h-4 mr-2" />
                   Limpar Concluídas
@@ -225,7 +224,7 @@ const Home = () => {
             <div
               className="h-2 bg-red-500 rounded-md"
               style={{ width: `${progress}%` }}
-            ></div>
+            />
           </div>
 
           <div className="flex justify-end items-center mt-2 gap-2">
