@@ -192,32 +192,34 @@ const Home = () => {
             ))}
 
             <AlertDialog>
-              <AlertDialogTrigger>
-                <Button variant="outline" className="text-xs rounded-md mt-3">
-                  <Trash className="w-4 h-4 mr-2" />
-                  Limpar Concluídas
-                </Button>
-              </AlertDialogTrigger>
+  <AlertDialogTrigger
+    render={
+      <Button variant="outline" className="text-xs rounded-md mt-3" />
+    }
+  >
+    <Trash className="w-4 h-4 mr-2" />
+    Limpar Concluídas
+  </AlertDialogTrigger>
 
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>
-                    Deseja excluir as tarefas concluídas?
-                  </AlertDialogTitle>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>
+        Deseja excluir as tarefas concluídas?
+      </AlertDialogTitle>
 
-                  <AlertDialogDescription>
-                    Esta ação não pode ser desfeita.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
+      <AlertDialogDescription>
+        Esta ação não pode ser desfeita.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
 
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Não</AlertDialogCancel>
-                  <AlertDialogAction onClick={clearCompletedTasks}>
-                    Sim
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Não</AlertDialogCancel>
+      <AlertDialogAction onClick={clearCompletedTasks}>
+        Sim
+      </AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
           </div>
 
           <div className="h-2 w-full bg-gray-100 mt-4 rounded-md">

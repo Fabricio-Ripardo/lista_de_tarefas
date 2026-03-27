@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.idea
+.vscode
+.postman
+postman
+Api-Tarefas.zip
+docker-compose.yml
+npm-debug.log
+.env
+.env.local
