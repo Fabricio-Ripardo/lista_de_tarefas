@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get - Produtos
+url: https://serverest.dev/produtos
+method: GET
+order: 3210298658619086

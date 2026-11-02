@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get - Usuários
+url: https://serverest.dev/usuarios
+method: GET
+body:
+  type: json
+  content: ""
+order: 1776260433599

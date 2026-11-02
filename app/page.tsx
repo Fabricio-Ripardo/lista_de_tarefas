@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import EditTask from "@/components/ui/hooks/edit-task";
 import { useState, useEffect } from "react";
-import api from "@/Api Tarefas/Api-Tarefas/src/services/api";
 
 type Task = {
   id: number;
@@ -109,7 +108,7 @@ const Home = () => {
 
   return (
     <main className="w-full h-screen bg-black flex justify-center items-center">
-      <Card className="w-lg p-4">
+      <Card className="w-lg p-4 rounded-md">
         <CardHeader className="flex gap-2">
           <Input
             value={newTask}

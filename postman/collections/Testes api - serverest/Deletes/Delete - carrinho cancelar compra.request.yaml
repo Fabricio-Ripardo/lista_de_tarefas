@@ -1,0 +1,9 @@
+$kind: http-request
+name: Delete - carrinho cancelar compra
+url: https://serverest.dev/carrinhos/cancelar-compra
+method: DELETE
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtheW5AdGVzdGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzc2ODYyOTYwLCJleHAiOjE3NzY4NjM1NjB9.mjfSGqppzGdU6wAyq2dWras4_dGHVw5GjBcMtLD1bhs
+order: 3559358028116892

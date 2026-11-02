@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get - carrinho
+url: https://serverest.dev/carrinhos
+method: GET
+order: 3390234459315405

@@ -1,0 +1,22 @@
+$kind: http-request
+name: Post - produto
+url: https://serverest.dev/produtos
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \"nome\": \"Redragon cobra\",\r
+
+    \"preco\": 112,\r
+
+    \"descricao\": \"Mouse\",\r
+
+    \"quantidade\": 220\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzc2ODU5MTY1LCJleHAiOjE3NzY4NTk3NjV9.0XnqbRmvDz8x9OyFX9vb9Yv5r7uJtndZZKrHsQlGnPo
+order: 927074561780940

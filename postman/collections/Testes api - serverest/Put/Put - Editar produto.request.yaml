@@ -1,0 +1,22 @@
+$kind: http-request
+name: Put - Editar produto
+url: https://serverest.dev/produtos/BeeJh5lz3k6kSIzA
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"nome\": \"Logitech MX Vertical\",\r
+
+    \    \"preco\": \"400\",\r
+
+    \    \"descricao\": \"Mouse\",\r
+
+    \    \"quantidade\":\"380\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzc2Njg5MjMwLCJleHAiOjE3NzY2ODk4MzB9.4W-wRn8TBlLrWHR1zuDNwM7i8xlUuSVvPyPbbCT84qI
+order: 1962340880449326

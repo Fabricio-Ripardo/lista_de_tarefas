@@ -1,0 +1,5 @@
+$kind: http-request
+name: Delete-User
+url: https://serverest.dev/usuarios/
+method: DELETE
+order: 1776427127140

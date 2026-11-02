@@ -1,0 +1,14 @@
+$kind: http-request
+name: Post - login
+url: https://serverest.dev/login
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \"email\":\"kayn@teste.com\",\r
+
+    \"password\":\"1234\"\r
+
+    }"
+order: 1776260407302

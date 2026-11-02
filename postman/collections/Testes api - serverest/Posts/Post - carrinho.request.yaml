@@ -1,0 +1,36 @@
+$kind: http-request
+name: Post - carrinho
+url: https://serverest.dev/carrinhos
+method: POST
+headers:
+  Content-Type: aplication/json
+body:
+  type: json
+  content: "{\r
+
+    \  \"produtos\": [\r
+
+    \    {\r
+
+    \      \"idProduto\": \"BeeJh5lz3k6kSIzA\",\r
+
+    \      \"quantidade\": 1\r
+
+    \    },\r
+
+    \    {\r
+
+    \      \"idProduto\": \"YaeJ455lz3k6kSIzA\",\r
+
+    \      \"quantidade\": 3\r
+
+    \    }\r
+
+    \  ]\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RldGVzdGVAdGVzdGUuY29tIiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzc2NTMyMzA3LCJleHAiOjE3NzY1MzI5MDd9.inZi9xyuebTf1WV-p614xyff90aHz_43tC2eMMRSgnE
+order: 3376302311999652

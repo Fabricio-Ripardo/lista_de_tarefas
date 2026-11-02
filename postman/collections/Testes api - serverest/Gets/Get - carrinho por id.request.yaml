@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get - carrinho por id
+url: https://serverest.dev/carrinhos/qbMqntef4iTOwWfg
+method: GET
+order: 4230981291830829

@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get - Usuário por id
+url: https://serverest.dev/usuarios/RsKJluz1AnF1Hk38
+method: GET
+body:
+  type: json
+  content: ""
+order: 2177632354811415

@@ -1,0 +1,18 @@
+$kind: http-request
+name: Post - Usuário
+url: https://serverest.dev/usuarios
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \"nome\": \"Ronald\",\r
+
+    \"email\": \"testeteste@teste.com\",\r
+
+    \"password\": \"1234\",\r
+
+    \"administrador\": \"true\"\r
+
+    }"
+order: 1576373170381190

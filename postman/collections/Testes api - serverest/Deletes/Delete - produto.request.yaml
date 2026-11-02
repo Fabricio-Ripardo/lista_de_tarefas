@@ -1,0 +1,9 @@
+$kind: http-request
+name: Delete - produto
+url: https://serverest.dev/produtos/K6leHdftCeOJj8BJ
+method: DELETE
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzc2ODU4Mzg2LCJleHAiOjE3NzY4NTg5ODZ9.5cJ5-9Mul3sI_Xgusqs4QjGii1R8BbZXFrT3hlwFYcw
+order: 2168087358487797

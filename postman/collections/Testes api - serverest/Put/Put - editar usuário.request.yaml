@@ -1,0 +1,20 @@
+$kind: http-request
+name: Put - editar usuário
+url: https://serverest.dev/usuarios/ztgshegwwDfT2o10
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \            \"nome\": \"Teste\",\r
+
+    \            \"email\": \"teste_1776424956666@example.com\",\r
+
+    \            \"password\": \"Test@123\",\r
+
+    \            \"administrador\": \"false\",\r
+
+    \            \"_id\": \"ztgshegwwDfT2o10\"\r
+
+    \        }"
+order: 1776427827875
