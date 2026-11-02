@@ -67,6 +67,8 @@ docker compose up --build
 
 Pré-requisitos: Node.js 20+, Python 3.12+ e MariaDB rodando com um banco chamado `lista_de_tarefas`.
 
+> Sem MariaDB instalado? Coloque `DB_ENGINE=sqlite` no `backend/.env` e o Django salva os dados num arquivo SQLite local.
+
 **Back-end**
 
 ```bash

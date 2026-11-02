@@ -95,6 +95,10 @@ DATABASES = {
     }
 }
 
+# Sem MariaDB instalado? Use DB_ENGINE=sqlite no backend/.env para salvar num arquivo local.
+if os.environ.get("DB_ENGINE") == "sqlite":
+    DATABASES["default"] = {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3"}
+
 # Os testes rodam em SQLite em memória: não precisam do MariaDB ligado.
 if "test" in sys.argv:
     DATABASES["default"] = {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}
