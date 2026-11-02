@@ -2,8 +2,7 @@
 
 Gerenciador de tarefas com **front-end em Next.js** e **API REST em Django REST Framework**, com dados persistidos no **MariaDB**.
 
-<!-- Dica: adicione um print da tela em docs/screenshot.png e descomente a linha abaixo -->
-<!-- ![Tela da aplicação](docs/screenshot.png) -->
+![Tela da aplicação](docs/screenshot.png)
 
 ## Funcionalidades
 
