@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+!.env.example
+
+# python / django
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+venv/
+
+# build do antigo back-end em Spring Boot
+target/

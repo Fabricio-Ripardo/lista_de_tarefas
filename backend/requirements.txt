@@ -1,0 +1,6 @@
+Django>=6.0,<6.1
+djangorestframework>=3.16
+django-cors-headers>=4.7
+mysqlclient>=2.2
+python-dotenv>=1.1
+gunicorn>=23.0

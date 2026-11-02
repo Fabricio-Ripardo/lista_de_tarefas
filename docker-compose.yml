@@ -1,17 +1,21 @@
+# Sobe o projeto inteiro: MariaDB + API Django + front-end Next.js
+#   docker compose up --build
+# Front-end: http://localhost:3000  |  API: http://localhost:8000/api/tasks/
+
 services:
   mariadb:
     image: mariadb:11
     container_name: lista-tarefas-db
-    restart: always
+    restart: unless-stopped
     environment:
-      MARIADB_ROOT_PASSWORD: 1234
-      MARIADB_DATABASE: lista_tarefas
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD:-tarefas-dev}
+      MARIADB_DATABASE: lista_de_tarefas
     ports:
       - "3307:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "mariadb-admin ping -h localhost -uroot -p1234 || exit 1"]
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -19,33 +23,38 @@ services:
 
   backend:
     build:
-      context: ./Api Tarefas/Api-Tarefas
-      dockerfile: ./dockerfile
+      context: ./backend
     container_name: lista-tarefas-backend
-    restart: always
+    restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8000:8000"
     depends_on:
       mariadb:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/lista_tarefas
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 1234
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-django-insecure-docker-dev}
+      DJANGO_DEBUG: "True"
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,backend
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+      DB_NAME: lista_de_tarefas
+      DB_USER: root
+      DB_PASSWORD: ${DB_PASSWORD:-tarefas-dev}
+      DB_HOST: mariadb
+      DB_PORT: "3306"
 
   frontend:
     build:
       context: .
       dockerfile: ./dockerfile
     container_name: lista-tarefas-frontend
-    restart: always
+    restart: unless-stopped
     ports:
       - "3000:3000"
     depends_on:
       - backend
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:8080
+      # As rotas /api do Next.js repassam as requisições para a API Django
+      DJANGO_API_URL: http://backend:8000/api
 
 volumes:
   mariadb_data:
